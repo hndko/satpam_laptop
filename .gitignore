@@ -1,0 +1,33 @@
+# Config file (contains credentials)
+config.json
+
+# Owner face encoding (personal data)
+owner_encoding.pkl
+owner_face.jpg
+
+# Intruder photos
+maling_*.jpg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

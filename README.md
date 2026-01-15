@@ -21,13 +21,15 @@
 
 ## 🛠️ Tech Stack
 
-| Technology       | Purpose                                          |
-| ---------------- | ------------------------------------------------ |
-| Python 3.11+     | Core Language                                    |
-| OpenCV           | Face Detection (Haar Cascade) & Image Processing |
-| Tkinter          | Desktop GUI Framework                            |
-| Pillow (PIL)     | Image Handling                                   |
-| Telegram Bot API | Real-time Notifications                          |
+| Technology       | Purpose                        |
+| ---------------- | ------------------------------ |
+| Python 3.11+     | Core Language                  |
+| face_recognition | Deep Learning Face Recognition |
+| dlib             | Face Detection Backend         |
+| OpenCV           | Image Processing               |
+| Tkinter          | Desktop GUI Framework          |
+| Pillow (PIL)     | Image Handling                 |
+| Telegram Bot API | Real-time Notifications        |
 
 ## 🚀 Instalasi
 
@@ -38,21 +40,46 @@
    cd satpam-laptop
    ```
 
-2. **Install dependencies**
+2. **Install dlib** (sudah tersedia wheel file)
 
    ```bash
-   pip install opencv-python pillow requests numpy
+   pip install dlib-19.24.1-cp311-cp311-win_amd64.whl
    ```
 
-3. **Konfigurasi Telegram Bot**
+3. **Install dependencies**
 
-   - Buat bot di [@BotFather](https://t.me/botfather)
-   - Edit `main.py` dan isi `TOKEN_BOT` dan `CHAT_ID`
+   ```bash
+   pip install opencv-python pillow requests numpy face_recognition
+   ```
 
-4. **Jalankan aplikasi**
+4. **Konfigurasi** - Edit `config.json`:
+
+   ```json
+   {
+     "telegram_token": "YOUR_BOT_TOKEN_HERE",
+     "chat_id": "YOUR_CHAT_ID_HERE",
+     "cooldown_seconds": 10,
+     "similarity_threshold": 0.6,
+     "camera_index": 0,
+     "auto_lock_on_intruder": false
+   }
+   ```
+
+5. **Jalankan aplikasi**
    ```bash
    python main.py
    ```
+
+## ⚙️ Konfigurasi
+
+| Parameter               | Deskripsi                           | Default |
+| ----------------------- | ----------------------------------- | ------- |
+| `telegram_token`        | Token bot Telegram dari @BotFather  | -       |
+| `chat_id`               | Chat ID untuk menerima notifikasi   | -       |
+| `cooldown_seconds`      | Interval antar notifikasi           | 10      |
+| `similarity_threshold`  | Toleransi pencocokan wajah (0-1)    | 0.6     |
+| `camera_index`          | Index kamera (0, 1, dll)            | 0       |
+| `auto_lock_on_intruder` | Auto lock Windows jika ada penyusup | false   |
 
 ## 📖 Cara Penggunaan
 
