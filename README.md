@@ -12,11 +12,13 @@
 
 ## ✨ Fitur
 
-- 🎥 **Real-time Face Detection** - Deteksi wajah menggunakan Haar Cascade
-- 👤 **Face Registration** - Daftarkan wajah pemilik sebagai referensi
-- 🔍 **Owner Recognition** - Identifikasi pemilik vs penyusup menggunakan histogram comparison
+- 🧠 **Deep Learning Face Recognition** - Deteksi wajah akurat dengan `face_recognition` library
+- 👤 **Persistent Face Registration** - Wajah tersimpan, tidak perlu daftar ulang
+- 🔍 **Owner Recognition** - Identifikasi pemilik vs penyusup
 - 📱 **Telegram Alerts** - Kirim foto penyusup ke Telegram secara otomatis
-- ⏱️ **Cooldown System** - Mencegah spam notifikasi (10 detik interval)
+- ⏱️ **Cooldown System** - Mencegah spam notifikasi
+- 🔒 **Auto-Lock Windows** - Kunci laptop otomatis saat penyusup terdeteksi (opsional)
+- 🔧 **External Config** - Konfigurasi lewat file JSON, tidak perlu edit code
 - 🖥️ **Desktop GUI** - Interface user-friendly dengan Tkinter
 
 ## 🛠️ Tech Stack
@@ -52,7 +54,13 @@
    pip install opencv-python pillow requests numpy face_recognition
    ```
 
-4. **Konfigurasi** - Edit `config.json`:
+4. **Konfigurasi** - Copy template dan edit:
+
+   ```bash
+   cp config.example.json config.json
+   ```
+
+   Lalu edit `config.json` dengan token Telegram Anda:
 
    ```json
    {
@@ -64,6 +72,8 @@
      "auto_lock_on_intruder": false
    }
    ```
+
+   > ⚠️ **Note:** `config.json` sudah di-ignore oleh `.gitignore` untuk keamanan credential.
 
 5. **Jalankan aplikasi**
    ```bash
