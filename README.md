@@ -12,7 +12,7 @@
 
 ## ✨ Fitur
 
-- 🧠 **Deep Learning Face Recognition** - Deteksi wajah akurat dengan `face_recognition` library
+- 🎥 **Real-time Face Detection** - Deteksi wajah menggunakan Haar Cascade
 - 👤 **Persistent Face Registration** - Wajah tersimpan, tidak perlu daftar ulang
 - 🔍 **Owner Recognition** - Identifikasi pemilik vs penyusup
 - 📱 **Telegram Alerts** - Kirim foto penyusup ke Telegram secara otomatis
@@ -21,17 +21,37 @@
 - 🔧 **External Config** - Konfigurasi lewat file JSON, tidak perlu edit code
 - 🖥️ **Desktop GUI** - Interface user-friendly dengan Tkinter
 
+## 📁 Struktur Project
+
+```
+satpam_laptop/
+├── src/                        # Source code
+│   ├── __init__.py
+│   ├── app.py                  # Main application class
+│   ├── config.py               # Configuration loader
+│   └── utils.py                # Utility functions
+├── data/                       # Data files (gitignored)
+│   ├── owner_data.pkl          # Saved face data
+│   ├── owner_face.jpg          # Owner face photo
+│   └── captures/               # Captured intruder photos
+├── config/
+│   ├── config.example.json     # Template config
+│   └── config.json             # User config (gitignored)
+├── main.py                     # Entry point
+├── requirements.txt            # Dependencies
+├── .gitignore
+└── README.md
+```
+
 ## 🛠️ Tech Stack
 
-| Technology       | Purpose                        |
-| ---------------- | ------------------------------ |
-| Python 3.11+     | Core Language                  |
-| face_recognition | Deep Learning Face Recognition |
-| dlib             | Face Detection Backend         |
-| OpenCV           | Image Processing               |
-| Tkinter          | Desktop GUI Framework          |
-| Pillow (PIL)     | Image Handling                 |
-| Telegram Bot API | Real-time Notifications        |
+| Technology       | Purpose                       |
+| ---------------- | ----------------------------- |
+| Python 3.11+     | Core Language                 |
+| OpenCV           | Face Detection (Haar Cascade) |
+| Tkinter          | Desktop GUI Framework         |
+| Pillow (PIL)     | Image Handling                |
+| Telegram Bot API | Real-time Notifications       |
 
 ## 🚀 Instalasi
 
@@ -42,40 +62,34 @@
    cd satpam-laptop
    ```
 
-2. **Install dlib** (sudah tersedia wheel file)
+2. **Install dependencies**
 
    ```bash
-   pip install dlib-19.24.1-cp311-cp311-win_amd64.whl
+   pip install -r requirements.txt
    ```
 
-3. **Install dependencies**
+3. **Konfigurasi** - Copy template dan edit:
 
    ```bash
-   pip install opencv-python pillow requests numpy face_recognition
+   cp config/config.example.json config/config.json
    ```
 
-4. **Konfigurasi** - Copy template dan edit:
-
-   ```bash
-   cp config.example.json config.json
-   ```
-
-   Lalu edit `config.json` dengan token Telegram Anda:
+   Lalu edit `config/config.json` dengan token Telegram Anda:
 
    ```json
    {
      "telegram_token": "YOUR_BOT_TOKEN_HERE",
      "chat_id": "YOUR_CHAT_ID_HERE",
      "cooldown_seconds": 10,
-     "similarity_threshold": 0.6,
+     "similarity_threshold": 0.7,
      "camera_index": 0,
      "auto_lock_on_intruder": false
    }
    ```
 
-   > ⚠️ **Note:** `config.json` sudah di-ignore oleh `.gitignore` untuk keamanan credential.
+   > ⚠️ **Note:** `config/config.json` sudah di-ignore oleh `.gitignore` untuk keamanan credential.
 
-5. **Jalankan aplikasi**
+4. **Jalankan aplikasi**
    ```bash
    python main.py
    ```
@@ -87,13 +101,13 @@
 | `telegram_token`        | Token bot Telegram dari @BotFather  | -       |
 | `chat_id`               | Chat ID untuk menerima notifikasi   | -       |
 | `cooldown_seconds`      | Interval antar notifikasi           | 10      |
-| `similarity_threshold`  | Toleransi pencocokan wajah (0-1)    | 0.6     |
+| `similarity_threshold`  | Toleransi pencocokan wajah (0-1)    | 0.7     |
 | `camera_index`          | Index kamera (0, 1, dll)            | 0       |
 | `auto_lock_on_intruder` | Auto lock Windows jika ada penyusup | false   |
 
 ## 📖 Cara Penggunaan
 
-1. **Buka Aplikasi** - Jalankan `main.py`
+1. **Buka Aplikasi** - Jalankan `python main.py`
 2. **Daftarkan Wajah** - Klik tombol "DAFTARKAN WAJAH SAYA"
 3. **Monitoring Aktif** - Sistem akan otomatis memantau
 4. **Alert Penyusup** - Jika wajah asing terdeteksi, foto akan dikirim ke Telegram
@@ -125,6 +139,7 @@
 - [ ] Multiple face registration
 - [ ] Integrasi dengan WhatsApp
 - [ ] Mode stealth (minimize to tray)
+- [ ] Upgrade ke deep learning face recognition
 
 ## 📄 License
 

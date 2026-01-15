@@ -1,11 +1,16 @@
 # Config file (contains credentials)
-config.json
+config/config.json
 
-# Owner face encoding (personal data)
+# Data files
+data/
+!data/.gitkeep
+
+# Owner face data (personal data)
 owner_encoding.pkl
+owner_data.pkl
 owner_face.jpg
 
-# Intruder photos
+# Intruder photos (legacy location)
 maling_*.jpg
 
 # Python
@@ -31,3 +36,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Wheel files (optional - uncomment if you want to include)
+# *.whl
